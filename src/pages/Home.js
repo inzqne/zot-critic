@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Card, Divider, Rating, Box, CardContent, Grid, CardActionArea, CardActions, TextField, Button } from "@mui/material"
 import '../App.scss';
 import '../globals/hack-styles.scss';
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase_config";
+//import { addDoc, collection } from "firebase/firestore";
+//import { db } from "../firebase_config";
 
 
 
 function Home() {
-    const reviewsCollectionRef = collection(db, "reviews");
+    //const reviewsCollectionRef = collection(db, "reviews");
     const [menuDict, setMenuDict] = useState({})
 
     async function callBackendAPI() {
