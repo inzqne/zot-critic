@@ -1,11 +1,11 @@
-import logo from '../logo.svg';
+import logo from '../transparent_logo.png';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Card, Divider, Rating, Box, CardContent, Grid, CardActionArea, CardActions, TextField, Button } from "@mui/material"
 import '../App.scss';
 import '../globals/hack-styles.scss';
 import { addDoc, collection } from "firebase/firestore";
-import { db, auth } from "../firebase-config";
+import { db } from "../firebase_config";
 
 
 
@@ -23,14 +23,14 @@ function Home() {
         return body;
     };
 
-    const createPost = async () => {
+    /*const createPost = async () => {
         await addDoc(reviewsCollectionRef, {
           title,
           postText,
           author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
         });
         navigate("/");
-      };
+      };*/
 
     useEffect(() => {
         getUserList();
@@ -70,7 +70,7 @@ function Home() {
             event.currentTarget.name,
             postText,
           });*/
-          console.log(event.currentTarget);
+          console.log(event.currentTarget.elements);
         //navigate("/");
     }
 
@@ -80,6 +80,8 @@ function Home() {
 
     return (
     <div className="app fill-view">
+    <img src={logo}>
+    </img>
       <ul>
         {
         Object.entries(menuDict)
@@ -101,7 +103,7 @@ function Home() {
                           <Card id={item.name} sx={{ maxWidth: 300, minWidth: 300, boxShadow: 0}} className='card' onClick={cardClick}>
                             <CardActionArea>
                             <CardContent>
-                                <h3 name='name'>
+                                <h3 name={item.name}>
                                   {item.name}
                                 </h3>
                                 <body2>

@@ -5,7 +5,7 @@ import { Card, Divider, Rating, Box, CardContent, Grid, CardActionArea, CardActi
 import './App.scss';
 import './globals/hack-styles.scss';
 import Reviews from './pages/Review';
-import Home from './pages/Review'
+import Home from './pages/Home'
 //import axios from 'axios';
 
 
