@@ -11,7 +11,7 @@ app.get('/express_backend', (req, res) => {
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });
 
-async function getUserList() {
+async function getBrandyList() {
     const response = await fetch('https://zotmeal-backend.vercel.app/api?location=brandywine');
     const body = await response.json();
 
@@ -23,8 +23,26 @@ async function getUserList() {
     return body;
 }
 
+async function getAnteateryList() {
+  const response = await fetch('https://zotmeal-backend.vercel.app/api?location=anteatery');
+  const body = await response.json();
+
+  if (response.status !== 200) {
+    throw Error(body.message) 
+  }
+
+  console.log(body);
+  return body;
+}
+
 // dining hall api
 app.get('/api/dining', async (req, res) => { 
-    const body = await getUserList();
-    res.send(body);
+    if (req.query.hall == 'brandywine') {
+      const body = await getBrandyList();
+      res.send(body);
+    }
+    else if (req.query.hall == 'anteatery') {
+      const body = await getAnteateryList();
+      res.send(body);
+    }
   });
